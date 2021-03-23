@@ -1,0 +1,443 @@
+﻿@*@using SMCD.Data.ViewModel
+    @using SMCD.Models
+    @model TechniqueListModel
+    @{
+        ViewData["Title"] = "Техника";
+        ViewData["Technic"] = "active";
+        Layout = "~/Views/Shared/_LayoutJob.cshtml";
+    }
+
+    <div class="container">
+        <br />
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-4">
+                <button class="btn btn-primary btn-block" type="submit" data-toggle="collapse"
+                        data-target="#addTechnic">
+                    Добавить технику
+                </button>
+                <br />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4">
+                <button class="btn btn-primary btn-block" type="submit" data-toggle="collapse"
+                        data-target="#finneTechnic">
+                    Найти технику
+                </button>
+                <br />
+            </div>
+        </div>
+
+
+        <div id="addTechnic" class="collapse">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <label for="lastName">Инвентарный номер</label>
+                        <input type="text" class="form-control" name="id">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <label for="lastName">Название</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <label for="lastName">Модель</label>
+                        <input type="text" class="form-control" name="model">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <label for="lastName">Техническое состояние</label>
+                        <input type="text" class="form-control" name="technecalCondition" >
+                    </div>
+                </div>
+                <br />
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" asp-controller="AddTechnique">Добавить</button>
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <div id="finneTechnic" class="collapse">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <label for="lastName">Инвентарный номер</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <input type="text" class="form-control" name="id">
+                                <br />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+
+                                <div class="text-center">
+                                    <button class="btn btn-primary btn-block" type="submit" data-toggle="collapse"
+                                            data-target="#finne" asp-controller="FindTechnique">
+                                        Найти технику
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="col-xs-12">
+                                <div id="finne" class="collapse">
+
+                                    <div class="container">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h3>История техники: @technic.name</h3>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Мероприятие</th>
+                                                            <th>Студент</th>
+                                                            <th>Состояние техники до</th>
+                                                            <th>Состояние техники после</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{
+                                                            foreach (var technicEvent in Model.TechniqueEvent)
+                                                            {
+                                                                <tr>
+                                                                    <td>@technicEvent.Event</td>
+                                                                    <td>@technicEvent.nameUser</td>
+                                                                    <td>@technicEvent.statusIn</td>
+                                                                    <td>@technicEvent.statusOut</td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div id="finne" class="collapse">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <h3>Информация о технике:</h3>
+                                                <hr class="mb-4">
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                <label for="lastName">Инвентарный номер</label>
+                                                <input type="text" class="form-control" name="id" value="@technic.id">
+                                                <br />
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                <label for="lastName">Название</label>
+                                                <input type="text" class="form-control" name="name" value="@tachnic.name">
+                                                <br />
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                <label for="lastName">Модель</label>
+                                                <input type="text" class="form-control" name>
+                                                <br />
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                <label for="lastName">Статус</label>
+                                                <select class="custom-select d-block w-100" id="country" required="">
+                                                    <option value="">Choose...</option>
+                                                    <option>United States</option>
+                                                </select>
+                                                <br />
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <label for="lastName">Техническое состояние</label>
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                                <br />
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="text-center">
+                                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Изменить</button>
+                                                    <br />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Инвентарный номер</th>
+                        <th>Название</th>
+                        <th>Модель</th>
+                        <th>Техническое состояние</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (Technique technic in Model.Technique)
+                        {
+                            <tr>
+                                <td>@technic.Id</td>
+                                <td>@technic.name</td>
+                                <td>@technic.model</td>
+                                <td>@technic.technicalCondition</td>
+                                <td>@technic.StatusTechnique.status</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>*@
+
+@{
+    ViewData["Title"] = "Техника";
+    ViewData["Technic"] = "active";
+    Layout = "~/Views/Shared/_LayoutJob.cshtml";
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-4">
+            <button class="btn btn-primary btn-block" type="submit" data-toggle="collapse"
+                    data-target="#addTechnic">
+                Добавить технику
+            </button>
+            <br />
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4">
+            <button class="btn btn-primary btn-block" type="submit" data-toggle="collapse"
+                    data-target="#finneTechnic">
+                Найти технику
+            </button>
+            <br />
+        </div>
+    </div>
+
+
+    <div id="addTechnic" class="collapse">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <label for="lastName">Инвентарный номер</label>
+                    <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <label for="lastName">Название</label>
+                    <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <label for="lastName">Модель</label>
+                    <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <label for="lastName">Техническое состояние</label>
+                    <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Добавить</button>
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div id="finneTechnic" class="collapse">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <label for="lastName">Инвентарный номер</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-block" type="submit" data-toggle="collapse"
+                                        data-target="#finne">
+                                    Найти технику
+                                </button>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="finne" class="collapse">
+
+                                <div class="container">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <h3>История техники: Canon 6d</h3>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Мероприятие</th>
+                                                        <th>Студент</th>
+                                                        <th>Состояние техники до</th>
+                                                        <th>Состояние техники после</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Мисс</td>
+                                                        <td>Константинов А.А.</td>
+                                                        <td>Исправна</td>
+                                                        <td>Исправна</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div id="finne" class="collapse">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h3>Информация о технике:</h3>
+                                            <hr class="mb-4">
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                            <label for="lastName">Инвентарный номер</label>
+                                            <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                            <label for="lastName">Название</label>
+                                            <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                            <label for="lastName">Модель</label>
+                                            <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                            <label for="lastName">Статус</label>
+                                            <select class="custom-select d-block w-100" id="country" required="">
+                                                <option value="">Свободна</option>
+                                                <option>На мероприятие</option>
+                                                <option>В ремонте</option>
+                                            </select>
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <label for="lastName">Техническое состояние</label>
+                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="text-center">
+                                                <button class="btn btn-primary btn-lg btn-block" type="submit">Изменить</button>
+                                                <br />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Инвентарный номер</th>
+                    <th>Название</th>
+                    <th>Модель</th>
+                    <th>Техническое состояние</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*@{
+                        foreach (var technic in Model.AllTechnics)
+                        {
+                            <tr>
+                                <td>@technic.id</td>
+                                <td>@technic.name</td>
+                                <td>@technic.model</td>
+                                <td>@technic.technicalCondition</td>
+                                <td></td>
+                            </tr>
+                        }
+                    }*@
+                <tr>
+                    <td>7778921</td>
+                    <td>Зеркальная камера</td>
+                    <td>Canon 6d</td>
+                    <td>Требуется чистка</td>
+                    <td>Свободна</td>
+                </tr>
+                <tr>
+                    <td>7778922</td>
+                    <td>Объектив</td>
+                    <td>24-50</td>
+                    <td>Исправна</td>
+                    <td>Свободна</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

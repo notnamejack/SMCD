@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewData["Title"] = "Профиль";
+    ViewData["Customers"] = "active";
+    Layout = "~/Views/Shared/_LayoutJob.cshtml";
+}
+
+<div class="container">
+    <div class="col-xs-12">
+        <h1 class="mt-5">Информация о профиле</h1>
+        <br />
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class=" col-3 col-sm-2 col-md-2 col-lg-1">
+            <svg class="bd-placeholder-img rounded-circle" width="75"
+                 height="75" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                 focusable="false" role="img" aria-label="Placeholder: 140x140">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777"></rect>
+                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+        </div>
+
+        <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+            <h3>Аносова Анна Михайловна</h3>
+            <p>Руководитель</p>
+        </div>
+    </div>
+    <br />
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div>
+                        <label for="lastName">Фамилия</label>
+                        <input type="text" class="form-control" id="fistName" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lastName">Имя</label>
+                        <input type="text" class="form-control" id="namr" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lastName">Отчество</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lastName">Группа</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div>
+                        <label for="lastName">Род деятельности</label>
+                        <select class="custom-select d-block w-100" id="country" required="">
+                            <option value="">Фото/Видео</option>
+                            <option>United States</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lastName">Телефон</label>
+                        <input type="number" class="form-control" id="namr" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lastName">Адресс эл. почты</label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Изменить</button>
+                            <br />
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить изменения</button>
+                            <br />
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                </div>
+                <!-- безопасность -->
+                <div class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
+                    <h1 class="mt-5">Безопасность</h1>
+                    <p>Изменить пароль</p>
+                </div>
+
+                <div class="col-xs-6 col-sm-12 col-md-6 col-lg-6">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-12">
+                            <div>
+                                <label for="lastName">Старый пароль</label>
+                                <input type="password" class="form-control" id="fistName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                            <div>
+                                <label for="lastName">Новый пароль</label>
+                                <input type="password" class="form-control" id="namr" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                            <div>
+                                <label for="lastName">Повторить ввод пароля</label>
+                                <input type="password" class="form-control" id="lastName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                            <br />
+                            <div>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Изменить пароль</button>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        @*<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h3>История мероприятий:</h3>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Мероприятие</th>
+                                <th>Род деятельности</th>
+                                <th>Количество баллов</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Мисс</td>
+                                <td>Фото</td>
+                                <td>5</td>
+                                <td>05.04.2020</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+</div>
+
